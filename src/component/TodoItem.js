@@ -8,9 +8,10 @@ import { BiCheckbox,BiCheckboxSquare, IconName } from "react-icons/bi";
 const TodoItem = ({ todo }) => {
   return (
     <>
-      <div className="check_box">{<i>{BiCheckbox}</i>}</div>
+      <div className="check_box">{<i>체크박스 아이콘</i>}</div>
       <div>{todo.title}</div>
-
+      <button>수정</button>
+      <button>삭제</button>
     </>
   );
 };
