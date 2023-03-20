@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 import Template from "../component/Template";
 
 // 이부분은 todo페이지의 App.js같은 메인컴포넌트이다
