@@ -13,7 +13,6 @@ const TodoList = ({ todos, setTodos }) => {
     );
   };
 
-
   return (
     <div>
         {todos.map((todo) => {
