@@ -1,44 +1,21 @@
 import React from "react";
+import styled from "styled-components";
 import TodoItem from "./TodoItem";
 
+
+
+const TodoListBox = styled.div`
+  flex: 1;
+  padding: 20px 32px 48px;
+  overflow-y: auto; // todo항목 길어지면 스크롤되게
+`;
+
 // todo목록들
-const TodoList = ({ todos, setTodos }) => {
-
-  // list클릭시 글씨 연하게 작용하는 이벤트
-  const handleOnClick = (id) => {
-    setTodos(
-      todos.map((item) => {
-        return item.id === id ? { ...item, checked: !item.checked } : item;
-      })
-    );
-  };
-
+const TodoList = ({ todos, onRemove, onToggle}) => {
   return (
-    <div>
-        {todos.map((todo) => {
-            return todo.checked ? (
-              <TodoItem
-                style={{ color: "lightGray", listStyle : "none"}}
-                onClick={() => handleOnClick(todo.id)}
-              >
-                <input type="checkbox"/>
-                {todo.title}
-                <span>수정</span>
-                <span>X</span>
-              </TodoItem>
-            ) : (
-              <TodoItem
-                style={{ color: "#000", listStyle: "none"}}
-                onClick={() => handleOnClick(todo.id)}
-              >
-                <input type="checkbox"/>
-                {todo.title}
-                <span>수정</span>
-                <span>X</span>
-              </TodoItem>
-            );
-          })}
-    </div>
+    <TodoListBox>
+      {todos.map((todo) => <TodoItem  key={todo.id} todo={todo} onRemove={onRemove} onToggle={onToggle}/> )}
+    </TodoListBox>
   );
 };
 

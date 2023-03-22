@@ -1,22 +1,31 @@
 import React from "react";
-// import "./App.css";
 import { Routes,Route } from "react-router-dom";
-import Nav from "./component/Nav";
 import Sidebar from './Sidebar'
 import Todo from "./Pages/Todo";
 import Yesterday from "./Pages/Yesterday";
 import Quotes from "./Pages/Quotes";
+import { createGlobalStyle } from "styled-components";
+
+
+// 전역스타일 설정
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: #F9F5EB;
+  }
+`;
+
 
 function App() {
   return (
-    <div className="App">
+    <>
+      <GlobalStyle/>
       <Routes>
         <Route path="/" element={<Todo/>}></Route>
         <Route path="/Yesterday" element={<Yesterday/>}></Route>
         <Route path="/quote" element={<Quotes />}></Route>
        </Routes> 
       <Sidebar />
-  </div>
+    </>
   );
 }
 
