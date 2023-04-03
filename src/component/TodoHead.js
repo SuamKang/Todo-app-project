@@ -26,8 +26,9 @@ const Header = styled.div`
   }
 `;
 
-const TodoHead = ({ undoneTasks }) => {
+const TodoHead = ({ todos }) => {
 
+  
   // 날짜 불러오기
   const today = new Date();
   // 날짜
@@ -40,6 +41,9 @@ const TodoHead = ({ undoneTasks }) => {
   const dayName = today.toLocaleDateString('ko-KR', {
     weekday: 'long'
   })
+
+  // 남은 할일 개수
+  const undoneTasks = todos.filter(todo => !todo.done);
 
   return (
     <Header>

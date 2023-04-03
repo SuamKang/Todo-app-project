@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import TodoList from "../component/TodoList";
 import TodoInsert from "../component/TodoInsert";
@@ -34,7 +34,7 @@ const Todo = () => {
       text: "빨래하기",
       done: false,
     },
-    {
+    { 
       id: 3,
       text: "리액트 공부하기",
       done: false,
@@ -70,16 +70,12 @@ const Todo = () => {
     setTodos(todos.map( todo => todo.id === id ? {...todo, done : !todo.done} : todo));
   }
 
-  // 남은 할일 개수
-  const undoneTasks = () => {
-    setTodos(todos.filter(todo => !todo.done));
-  }
-  console.log(()=> undoneTasks) //??
+
 
  // 기존 Template 컴포넌트 삭제(불필요한 컴포넌트였음)
   return (
     <TodoTemplate>
-      <TodoHead undoneTasks={()=>undoneTasks()} />
+      <TodoHead todos={todos} />
       <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
       <TodoInsert inputTodo={inputTodo} setInputTodo={setInputTodo} onCreate={onCreate} onChange={onChange}/>
     </TodoTemplate>

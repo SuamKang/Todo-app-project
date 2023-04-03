@@ -72,7 +72,7 @@ const Input = styled.input`
 `;
 
 // 투두 인풋창 (버튼 클릭하면 인풋창(모달형태로) 나오도록)
-const TodoInsert = ({inputTodo, setInputTodo, onCreate, onChange }) => {
+const TodoInsert = ({inputTodo, onCreate, onChange }) => {
   const [open, setOpen] = useState(false); // Input창 오픈 상태
 
   // Input 모달창 토글 
@@ -88,7 +88,6 @@ const TodoInsert = ({inputTodo, setInputTodo, onCreate, onChange }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     onCreate();
-    setInputTodo("");
   }
   return (
     <>
