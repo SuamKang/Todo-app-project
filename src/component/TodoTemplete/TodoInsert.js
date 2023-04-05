@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { MdAdd } from "react-icons/md"; // react 아이콘 삽입
+import { useTodoDispatch, useTodoNextId } from "./TodoContext";
 
 // 추가버튼 컴포넌트(동그란 모양)
 const PlusCircleBtn = styled.div`
@@ -55,7 +56,7 @@ const InputModal = styled.div`
 // 모달창 안 컴포넌트
 const InputForm = styled.form`
   background: #1C3879;
-  padding: 35px;
+  padding: 30px;
   border-bottom-left-radius: 16px; // 모서리 배경과 맞춤
   border-bottom-right-radius: 16px;
   border-top: 1px solid #e9ecef;
@@ -72,23 +73,40 @@ const Input = styled.input`
 `;
 
 // 투두 인풋창 (버튼 클릭하면 인풋창(모달형태로) 나오도록)
-const TodoInsert = ({inputTodo, onCreate, onChange }) => {
-  const [open, setOpen] = useState(false); // Input창 오픈 상태
+const TodoInsert = () => {
+  const [inputTodo, setInputTodo] = useState(""); // input 상태관리
+  const [open, setOpen] = useState(false); // input모달창 상태관리
+  
+  // custom hook
+  const dispatch = useTodoDispatch();
+  const nextId = useTodoNextId();
+
 
   // Input 모달창 토글 
-  const onInput = () => setOpen(!open); // 반전 
+  const onInputToggle = () => setOpen(!open); // 반전 
+  
 
-  // // 엔터키 이벤트
-  // const onKeyDown = (e) => {
-  //   if(e.key === 'Enter'){
-  //     onCreate();
-  //   }
-  // }
-  // 
-  const onSubmit = (e) => {
+  const onChange = (e) => {
     e.preventDefault();
-    onCreate();
+    setInputTodo(e.target.value)
   }
+
+  // 새로운 할일 추가 후 등록 -> 나중에 fetch요청해서 데이터 추가로 수정
+  const onSubmit = (e) => {
+    e.preventDefault(); 
+    dispatch({
+      tpye : "CREATE",
+      todo : {
+        id: nextId.current,
+        text: inputTodo,
+        done: false,
+      }
+    });
+    setInputTodo(""); // 인풋창 초기화
+    nextId.current += 1; // id값 증가
+  }
+
+
   return (
     <>
       {open && (
@@ -97,11 +115,11 @@ const TodoInsert = ({inputTodo, onCreate, onChange }) => {
             <Input 
             value={inputTodo}
             onChange={onChange}
-            placeholder="할일 추가 후, Enter를 누르세요" autoFocus />
+            placeholder="할 일 추가 후, Enter를 누르세요" autoFocus />
           </InputForm>
         </InputModal>
       )}
-      <PlusCircleBtn open={open} onClick={onInput}>
+      <PlusCircleBtn open={open} onClick={onInputToggle}>
         <MdAdd />
       </PlusCircleBtn>
     </>
@@ -109,3 +127,12 @@ const TodoInsert = ({inputTodo, onCreate, onChange }) => {
 };
 
 export default TodoInsert;
+
+
+  // // 엔터키 이벤트
+  // const onKeyDown = (e) => {
+  //   if(e.key === 'Enter'){
+  //     onCreate();
+  //   }
+  // }
+  // 

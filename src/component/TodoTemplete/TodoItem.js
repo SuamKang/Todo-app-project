@@ -1,6 +1,7 @@
 import React from "react";
 import styled , {css} from "styled-components";
 import { MdDone, MdDelete } from 'react-icons/md'; // react icons 사용
+import { useTodoDispatch } from "./TodoContext";
 
 // 체크박스 모양 컴포넌트(동그라미)
 const CheckCircle = styled.div`
@@ -55,15 +56,35 @@ const TodoItemBox = styled.div`
 `;
 
 // todo목록 하나
-const TodoItem = ({ todo, onRemove, onToggle}) => {
+const TodoItem = ({todo}) => {
   const { id, text, done } = todo;
+  
+  // custom hook
+  const dispatch = useTodoDispatch();
+
+  const onToggle = () => {
+    dispatch({
+      type : 'TOGGLE',
+      id
+    });
+  }
+
+  const onRemove = () => {
+    dispatch({
+      type : 'REMOVE',
+      id
+    })
+  }
+
+
+
   return (
     <TodoItemBox>
-      <CheckCircle done={done} onClick={() => onToggle(id)}>
+      <CheckCircle done={done} onClick={onToggle}>
         {done && <MdDone/>} 
       </CheckCircle>
       <Text done={done}>{text}</Text>
-      <Delete onClick={() => onRemove(id)}>
+      <Delete onClick={onRemove}>
         <MdDelete />
       </Delete>
     </TodoItemBox>

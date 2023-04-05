@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes,Route } from "react-router-dom";
-import Sidebar from './Sidebar'
+import Header from './component/Header'
 import Todo from "./Pages/Todo";
-import Yesterday from "./Pages/Yesterday";
+import Weather from "./Pages/Weather";
 import Quotes from "./Pages/Quotes";
 import { createGlobalStyle } from "styled-components";
 
@@ -17,15 +17,15 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   return (
-    <>
+    <div>
       <GlobalStyle/>
+      <Header/>
       <Routes>
         <Route path="/" element={<Todo/>}></Route>
-        <Route path="/Yesterday" element={<Yesterday/>}></Route>
-        <Route path="/quote" element={<Quotes />}></Route>
-       </Routes> 
-      <Sidebar />
-    </>
+        <Route path="/weather" element={<Weather/>}></Route>
+        <Route path="/quotes" element={<Quotes />}></Route>
+      </Routes> 
+    </div>
   );
 }
 

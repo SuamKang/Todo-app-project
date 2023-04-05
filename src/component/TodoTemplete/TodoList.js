@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useTodoState } from "./TodoContext";
 import TodoItem from "./TodoItem";
 
 
@@ -11,10 +12,13 @@ const TodoListBox = styled.div`
 `;
 
 // todo목록들
-const TodoList = ({ todos, onRemove, onToggle}) => {
+const TodoList = () => {
+  //custom hook 
+  const todos = useTodoState();
+
   return (
     <TodoListBox>
-      {todos.map((todo) => <TodoItem  key={todo.id} todo={todo} onRemove={onRemove} onToggle={onToggle}/> )}
+      {todos.map((todo) => <TodoItem  key={todo.id} todo={todo} /> )}
     </TodoListBox>
   );
 };
