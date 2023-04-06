@@ -23,10 +23,10 @@ const Nav = styled.header`
 const MenuBar = styled.div`
   float: left;
   width: 300px;
-  background: #1c3879;
+  background: #002B5B;
   height: 100%;
   border-radius: 15px;
-  box-shadow: 0 2 5 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2 5 rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,7 +35,7 @@ const MenuBar = styled.div`
     justify-content: space-between;
     align-items: center;
     & li {
-        padding: 10px 5px;
+        padding: 5px 5px;
         &:nth-child(2) {
             border-left: 1px solid #fff;
             border-right: 1px solid #fff;
@@ -45,6 +45,10 @@ const MenuBar = styled.div`
         display: block;
         padding: 10px;
         color: #fff;
+        &:hover {
+          color: #FFEBB7;
+          text-decoration: underline;
+        }
       }
     }
 `;
@@ -53,9 +57,9 @@ const LoginBar = styled.div`
   float: right;
   max-width: 200px;
   height: 100%;
-  background: #1C3879;
+  background: #002B5B;
   border-radius: 15px;
-  box-shadow: 0 2 5 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 5px rgba(0 0 0 0.05);
   display: flex;
   align-items: center;
   .login-menu {
@@ -64,6 +68,10 @@ const LoginBar = styled.div`
     text-align: center;
     cursor: pointer;
     color: #fff;
+    &:hover {
+      color: #FFEBB7;
+      text-decoration: underline;
+    }
   }
 `;
 
