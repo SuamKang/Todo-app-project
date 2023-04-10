@@ -1,12 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { useTodoState } from "./TodoContext";
 
-const TodoHead = () => {
 
-  // custom hook 적용
-  const todos = useTodoState();
+const TodoHead = ({todos}) => {
 
+
+ 
+  
+  // console.log(todos)
   // 남은 할일 개수
   const undoneTasks = todos.filter(todo => !todo.done);
 
@@ -23,8 +25,6 @@ const TodoHead = () => {
   const dayName = today.toLocaleDateString('ko-KR', {
     weekday: 'long'
   })
-
-
 
   return (
     <Header>

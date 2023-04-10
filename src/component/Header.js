@@ -82,7 +82,7 @@ const Header = () => {
         <MenuBar>
           <ul className="menu-list">
             <li>
-              <Link to="/">오늘 할 일</Link>
+              <Link to="/todo">오늘 할 일</Link>
             </li>
             <li>
               <Link to="/weather">오늘 날씨</Link>

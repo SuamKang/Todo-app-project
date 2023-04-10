@@ -26,14 +26,14 @@ const Weather = () => {
     const searchWeather = async () => {
         try{
             const response = await axios.get(url); 
-            console.log(response.data) // 해당 객체안의 name,main.temp,weather...
+            // console.log(response.data) // 해당 객체안의 name,main.temp,weather...
             setInfo(response.data); // 받아온 데이터  
         } 
         catch(err){
             throw new Error('Cannot found response')
         }
     }
-    
+
     return(
         <WeatherBlock>
             <WeatherHead/>

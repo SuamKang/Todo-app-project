@@ -1,10 +1,13 @@
-// import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import TodoList from "../component/TodoTemplete/TodoList";
 import TodoInsert from "../component/TodoTemplete/TodoInsert";
 import TodoHead from "../component/TodoTemplete/TodoHead";
 import '../App.css'
-import { TodoProvider } from "../component/TodoTemplete/TodoContext";
+import { readTodo } from "../actions/index";
+import useFetch from "../util/useFetch";
+
 
 
 // todo전체 레이아웃
@@ -21,16 +24,24 @@ const TodoTemplate = styled.div`
 `;
 
 const Todo = () => {
- 
- // 기존 Template 컴포넌트 삭제(불필요한 컴포넌트였음)
+
+  // const dispatch = useDispatch();
+
+  const [todos, isPending] = useFetch(`http://localhost:3001/todos`)
+
+  // 1 데이터 체크를 한다
+  // 2 데이터 요청을 보낸다
+  // 3 데이터 요청을 보낸 값을 state값으로 저장한다.
+  // 4 state를 뿌려준다.
   return (
-    <TodoProvider>
-      <TodoTemplate>
-        <TodoHead/>
-        <TodoList/>
-        <TodoInsert/>
-      </TodoTemplate>
-    </TodoProvider>
+      <>
+      {todos && 
+        <TodoTemplate>
+          <TodoHead todos={todos}/>
+          <TodoList todos={todos} isPending={isPending}/>
+          <TodoInsert/>
+        </TodoTemplate>}
+      </>
   );
 };
 
@@ -38,34 +49,10 @@ export default Todo;
 
 
 
-  // useReducer쓰기 전 초기 상태관리
-
-  // 앞으로 추가 할일 인풋 상태
-  // const [inputTodo, setInputTodo] = useState("");
-  // // 할일들
-  // const [todos, setTodos] = useState([
-  //   {
-  //     id: 1,
-  //     text: "운동하기",
-  //     done: false,
-  //   },
-  //   {
-  //     id: 2,
-  //     text: "빨래하기",
-  //     done: false,
-  //   },
-  //   { 
-  //     id: 3,
-  //     text: "리액트 공부하기",
-  //     done: false,
-  //   },
-  // ]);
-
   // // inputTodo 인풋 이벤트 받기
-  // const onChange = (e) => {
+  // const changeFrom = (e) => {
   //   e.preventDefault();
-  //   const {value} = e.target;
-  //   setInputTodo(value);
+  //   setTodos(e.target.value);
   // };  
 
   // // 할일 추가 이벤트
@@ -81,7 +68,7 @@ export default Todo;
   // };
 
   // // 할일 선택 항목 삭제 이벤트
-  // const onRemove = (id) => {
+  // const onRemove = (id) => {y
   //   setTodos(todos.filter((todo) => todo.id !== id));
   // }
 
