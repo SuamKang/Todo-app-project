@@ -33,6 +33,7 @@ const Weather = () => {
             throw new Error('Cannot found response')
         }
     }
+    console.log(info)
 
     return(
         <WeatherBlock>
