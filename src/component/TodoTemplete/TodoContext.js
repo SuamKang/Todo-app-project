@@ -1,33 +1,33 @@
-import React, { createContext, useReducer, useContext, useRef } from "react";
+import { createContext, useReducer, useContext, useRef } from 'react';
 
 // 초기 상태
 const initialTodos = [
   {
     id: 1,
-    text: "운동하기",
+    text: '운동하기',
     done: false,
   },
   {
     id: 2,
-    text: "빨래하기",
+    text: '빨래하기',
     done: false,
   },
   {
     id: 3,
-    text: "리엑트 공부하기",
+    text: '리엑트 공부하기',
     done: false,
   },
 ];
 
 const todoReducer = (state, action) => {
   switch (action.type) {
-    case "CREATE":
+    case 'CREATE':
       return state.concat(action.todo);
-    case "TOGGLE":
+    case 'TOGGLE':
       return state.map((todo) =>
         todo.id === action.id ? { ...todo, done: !todo.done } : todo
       );
-    case "REMOVE":
+    case 'REMOVE':
       return state.filter((todo) => todo.id !== action.id);
     default:
       throw new Error(`Unhandled action type : ${action.tpye}`);
@@ -54,19 +54,19 @@ export const TodoProvider = ({ children }) => {
     <TodoStateContext.Provider value={state}>
       <TodoDispatchContext.Provider value={dispatch}>
         <TodoNextIdContext.Provider value={nextId}>
-            {children}
+          {children}
         </TodoNextIdContext.Provider>
       </TodoDispatchContext.Provider>
     </TodoStateContext.Provider>
   );
 };
- 
+
 // custom hook 1 (state를 담은 contextAPI를 사용)
 export const useTodoState = () => {
   const context = useContext(TodoStateContext);
   if (!context) {
     // 예외처리
-    throw new Error("Cannot find TodoProvider");
+    throw new Error('Cannot find TodoProvider');
   }
   return context;
 };
@@ -76,7 +76,7 @@ export const useTodoDispatch = () => {
   const context = useContext(TodoDispatchContext);
   if (!context) {
     // 예외처리
-    throw new Error("Cannot find TodoProvider");
+    throw new Error('Cannot find TodoProvider');
   }
   return context;
 };
@@ -86,7 +86,7 @@ export const useTodoNextId = () => {
   const context = useContext(TodoNextIdContext);
   if (!context) {
     // 예외처리
-    throw new Error("Cannot find TodoProvider");
+    throw new Error('Cannot find TodoProvider');
   }
   return context;
 };

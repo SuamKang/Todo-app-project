@@ -1,17 +1,9 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import styled from "styled-components";
+import styled from 'styled-components';
 
-
-const TodoHead = ({todos}) => {
-
-
- 
-  
+const TodoHead = ({ todos }) => {
   // console.log(todos)
   // 남은 할일 개수
-  const undoneTasks = todos.filter(todo => !todo.done);
-
+  const undoneTasks = todos.filter((todo) => !todo.done);
 
   // 날짜 불러오기
   const today = new Date();
@@ -19,24 +11,25 @@ const TodoHead = ({todos}) => {
   const dateString = today.toLocaleDateString('ko-KR', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
   });
   // 요일
   const dayName = today.toLocaleDateString('ko-KR', {
-    weekday: 'long'
-  })
+    weekday: 'long',
+  });
 
   return (
     <Header>
       <h1>오늘 할 일</h1>
-      <div className="date">{dateString} <span>{dayName}</span></div>
+      <div className="date">
+        {dateString} <span>{dayName}</span>
+      </div>
       <div className="task-left">할일 {undoneTasks.length}개 남음</div>
     </Header>
   );
 };
 
 export default TodoHead;
-
 
 const Header = styled.div`
   padding: 40px 30px 20px 30px;
@@ -47,7 +40,7 @@ const Header = styled.div`
     margin: 0;
     font-size: 36px;
     font-weight: 800;
-    color: #1C3879;
+    color: #1c3879;
   }
   .date {
     margin-top: 10px;
@@ -55,7 +48,7 @@ const Header = styled.div`
     text-align: right;
   }
   .task-left {
-    color: #1C3879;
+    color: #1c3879;
     font-size: 18px;
     font-weight: 600;
     margin-top: 20px;

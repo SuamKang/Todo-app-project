@@ -1,53 +1,49 @@
-import React, { useState,useRef } from "react";
-import styled, { css } from "styled-components";
-import { MdAdd } from "react-icons/md"; // react 아이콘 삽입
-import { useDispatch, useSelector } from "react-redux";
-import { createTodo } from "../../actions/index";
-import { fetchCreate } from "../../util/api";
-
+import { useState } from 'react';
+import styled, { css } from 'styled-components';
+import { MdAdd } from 'react-icons/md'; // react 아이콘 삽입
+// import { useDispatch, useSelector } from 'react-redux';
+// import { createTodo } from '../../actions/index';
+import { fetchCreate } from '../../util/api';
 
 // 투두 인풋창 (버튼 클릭하면 인풋창(모달형태로) 나오도록)
 
 const TodoInsert = () => {
   // const dispatch = useDispatch();
-  
+
   const [open, setOpen] = useState(false); // input모달창 상태관리
   const [input, setInput] = useState(''); // input상태관리
 
-
   const onInputToggle = () => {
-    setOpen(!open); // 반전 
-  }
-
+    setOpen(!open); // 반전
+  };
 
   const onChange = (e) => {
-    const {value} = e.target;
-    setInput(value)
-  } 
-
-
+    const { value } = e.target;
+    setInput(value);
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    let todo ={
+    let todo = {
       text: input,
       done: false,
-    }
-    fetchCreate(`http://localhost:3001/todos`,todo)
-  }
-
+    };
+    fetchCreate(`http://localhost:3001/todos`, todo);
+  };
 
   return (
     <>
       {open && (
         <InputModal>
           <InputForm onSubmit={onSubmit}>
-            <Input 
-            type="text"
-            name="text"
-            value={input}
-            onChange={(e) => onChange(e)}
-            placeholder="할 일 추가 후, Enter를 누르세요" autoFocus />
+            <Input
+              type="text"
+              name="text"
+              value={input}
+              onChange={(e) => onChange(e)}
+              placeholder="할 일 추가 후, Enter를 누르세요"
+              autoFocus
+            />
           </InputForm>
         </InputModal>
       )}
@@ -59,8 +55,6 @@ const TodoInsert = () => {
 };
 
 export default TodoInsert;
-
-
 
 // 추가버튼 컴포넌트(동그란 모양)
 const PlusCircleBtn = styled.div`
@@ -114,7 +108,7 @@ const InputModal = styled.div`
 `;
 // 모달창 안 컴포넌트
 const InputForm = styled.form`
-  background: #1C3879;
+  background: #1c3879;
   padding: 30px;
   border-bottom-left-radius: 16px; // 모서리 배경과 맞춤
   border-bottom-right-radius: 16px;

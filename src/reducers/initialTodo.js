@@ -1,6 +1,5 @@
 const initialTodo = {
-    todos:  []
-}
-
+  todos: [],
+};
 
 export default initialTodo;

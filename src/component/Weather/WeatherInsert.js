@@ -1,16 +1,16 @@
-import React from "react";
-import styled from "styled-components";
+import styled from 'styled-components';
 
-
-
-
-const WeatherInsert = ({value, onChange, onClick}) => {
-
+const WeatherInsert = ({ value, onChange, onClick }) => {
   return (
     <InputContainer>
-      <InputForm >
-          <input type="text"  placeholder="지역을 입력하세요." value={value} onChange={onChange} />
-          <button onClick={onClick}>검색</button>
+      <InputForm>
+        <input
+          type="text"
+          placeholder="지역을 입력하세요."
+          value={value}
+          onChange={onChange}
+        />
+        <button onClick={onClick}>검색</button>
       </InputForm>
     </InputContainer>
   );
@@ -23,7 +23,7 @@ const InputContainer = styled.div`
   position: absolute;
   top: 22%;
   left: 0;
-  border-bottom : 1px solid #e9ecef;
+  border-bottom: 1px solid #e9ecef;
 `;
 
 const InputForm = styled.div`
@@ -38,16 +38,16 @@ const InputForm = styled.div`
     border-radius: 8px;
     font-size: 18px;
     outline: none;
-    &:focus{
-      border: 1px solid #1C3879;
-      background-color: rgb(11, 36, 71, .03);
+    &:focus {
+      border: 1px solid #1c3879;
+      background-color: rgb(11, 36, 71, 0.03);
     }
   }
   button {
     width: 20%;
     padding: 12px;
     margin-left: 12px;
-    background: #002B5B;
+    background: #002b5b;
     font-size: 18px;
     color: #fff;
     border: none;
@@ -59,5 +59,3 @@ const InputForm = styled.div`
     }
   }
 `;
-
-

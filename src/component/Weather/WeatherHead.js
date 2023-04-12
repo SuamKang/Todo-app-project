@@ -1,26 +1,24 @@
-import React from "react";
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const WeatherHead = () => {
-
-
-
   const today = new Date();
   // 날짜
-  const dateString = today.toLocaleDateString("ko-KR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+  const dateString = today.toLocaleDateString('ko-KR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
   });
   // 요일
-  const dayName = today.toLocaleDateString("ko-KR", {
-    weekday: "long",
+  const dayName = today.toLocaleDateString('ko-KR', {
+    weekday: 'long',
   });
 
   return (
     <Header>
       <h1>오늘 날씨</h1>
-      <div className="date">{dateString} {dayName}</div>
+      <div className="date">
+        {dateString} {dayName}
+      </div>
     </Header>
   );
 };
@@ -36,7 +34,7 @@ const Header = styled.div`
     margin: 0;
     font-size: 36px;
     font-weight: 800;
-    color: #002B5B;
+    color: #002b5b;
   }
   .date {
     margin-top: 20px;

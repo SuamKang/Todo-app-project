@@ -1,16 +1,12 @@
-import { useState } from "react";
-import styled, { css } from "styled-components";
-import { MdDone, MdDelete } from "react-icons/md"; // react icons 사용
+import styled, { css } from 'styled-components';
+import { MdDone, MdDelete } from 'react-icons/md'; // react icons 사용
 // import { removeTodo, toggleTodo, readTodo } from "../../actions";
 // import { useDispatch } from "react-redux";
-import { fetchDelete, fetchPatch } from "../../util/api";
-
-
+import { fetchDelete, fetchPatch } from '../../util/api';
 
 // todo목록 하나
 const TodoItem = ({ id, done, text }) => {
   // const dispatch = useDispatch();
-
 
   // 해당 id제거 요청
   const handleRemove = () => {
@@ -21,12 +17,10 @@ const TodoItem = ({ id, done, text }) => {
   const handleToggle = (e) => {
     e.preventDefault();
 
-    let patchData = { "done" : !done };
-    console.log(done)
-    fetchPatch(`http://localhost:3001/todos/`, id, patchData)
+    let patchData = { done: !done };
+    console.log(done);
+    fetchPatch(`http://localhost:3001/todos/`, id, patchData);
   };
-
-  
 
   return (
     <TodoItemBox>

@@ -1,7 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import Login from "./Login";
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import Login from './Login';
 
 const Nav = styled.header`
   margin-top: 10px;
@@ -13,7 +12,7 @@ const Nav = styled.header`
     box-sizing: border-box;
     position: relative;
     &::after {
-      content: "";
+      content: '';
       clear: both;
       display: block;
     }
@@ -23,7 +22,7 @@ const Nav = styled.header`
 const MenuBar = styled.div`
   float: left;
   width: 300px;
-  background: #002B5B;
+  background: #002b5b;
   height: 100%;
   border-radius: 15px;
   box-shadow: 0 2 5 rgba(0, 0, 0, 0.5);
@@ -35,29 +34,29 @@ const MenuBar = styled.div`
     justify-content: space-between;
     align-items: center;
     & li {
-        padding: 5px 5px;
-        &:nth-child(2) {
-            border-left: 1px solid #fff;
-            border-right: 1px solid #fff;
-        }
-    }
-    & a {
-        display: block;
-        padding: 10px;
-        color: #fff;
-        &:hover {
-          color: #FFEBB7;
-          text-decoration: underline;
-        }
+      padding: 5px 5px;
+      &:nth-child(2) {
+        border-left: 1px solid #fff;
+        border-right: 1px solid #fff;
       }
     }
+    & a {
+      display: block;
+      padding: 10px;
+      color: #fff;
+      &:hover {
+        color: #ffebb7;
+        text-decoration: underline;
+      }
+    }
+  }
 `;
 
 const LoginBar = styled.div`
   float: right;
   max-width: 200px;
   height: 100%;
-  background: #002B5B;
+  background: #002b5b;
   border-radius: 15px;
   box-shadow: 0 2px 5px rgba(0 0 0 0.05);
   display: flex;
@@ -69,7 +68,7 @@ const LoginBar = styled.div`
     cursor: pointer;
     color: #fff;
     &:hover {
-      color: #FFEBB7;
+      color: #ffebb7;
       text-decoration: underline;
     }
   }

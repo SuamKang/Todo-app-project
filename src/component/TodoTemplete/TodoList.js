@@ -1,23 +1,16 @@
-import React,{useState} from "react";
-import styled from "styled-components";
-import TodoItem from "./TodoItem";
-import { useDispatch, useSelector } from "react-redux";
-import {readTodo} from "../../actions/index"
-
+import styled from 'styled-components';
+import TodoItem from './TodoItem';
 
 // todo목록들
-const TodoList = ({todos}) => {
-
-
-  
+const TodoList = ({ todos }) => {
   return (
     <TodoListBox>
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}
-          id = {todo.id}
-          text ={todo.text}
-          done = {todo.done}
+          id={todo.id}
+          text={todo.text}
+          done={todo.done}
         />
       ))}
     </TodoListBox>
