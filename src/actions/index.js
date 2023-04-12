@@ -1,4 +1,4 @@
-
+/* eslint-disable */ // 해당파일은 eslint적용안한다는 주석설정
 // action types
 export const READ = "READ";
 export const CREATE = "CREATE";
