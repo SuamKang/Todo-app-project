@@ -1,10 +1,12 @@
 import React from "react";
-import { Routes,Route } from "react-router-dom";
-import Sidebar from './Sidebar'
+import { BrowserRouter,Routes,Route } from "react-router-dom";
+import Header from './component/Header'
+import Home from "./Pages/Home";
 import Todo from "./Pages/Todo";
-import Yesterday from "./Pages/Yesterday";
+import Weather from "./Pages/Weather";
 import Quotes from "./Pages/Quotes";
 import { createGlobalStyle } from "styled-components";
+import TodoList from "./Pages/version2";
 
 
 // 전역스타일 설정
@@ -17,15 +19,31 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <GlobalStyle/>
       <Routes>
-        <Route path="/" element={<Todo/>}></Route>
-        <Route path="/Yesterday" element={<Yesterday/>}></Route>
-        <Route path="/quote" element={<Quotes />}></Route>
-       </Routes> 
-      <Sidebar />
-    </>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/todo" element={
+        <>
+          <Header/> 
+          <Todo/>
+          {/* <version2 /> */}
+        </>
+        }></Route>
+        <Route path="/weather" element={
+        <>
+          <Header/>
+          <Weather/>
+        </>
+        }></Route>
+        <Route path="/quotes" element={
+        <>
+          <Header/>  
+          <Quotes/>
+        </>
+        }></Route>
+      </Routes> 
+    </BrowserRouter>
   );
 }
 

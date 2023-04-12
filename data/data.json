@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "text": "프리프로젝트 준비",
+      "done": false,
+      "id": 1
+    },
+    {
+      "text": "카페가기",
+      "done": false,
+      "id": 2
+    },
+    {
+      "text": "운동하기",
+      "done": false,
+      "id": 3
+    },
+    {
+      "text": "수영하기",
+      "done": false,
+      "id": 4
+    }
+  ]
+}
