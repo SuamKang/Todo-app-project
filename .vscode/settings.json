@@ -1,0 +1,4 @@
+{
+    "eslint.codeActionsOnSave.mode": "all",
+    "eslint.ignoreUntitled": false
+}
